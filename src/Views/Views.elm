@@ -107,7 +107,6 @@ answerView canAnswer answer_selected question_number {number, label} =
 
         ButtonGroup.button[ btn_color, Button.onClick cmd, Button.attrs[Spacing.m1] ][ text label ]
 
-
 resultView: Bool -> String -> Column Msg
 resultView good result =
     Grid.col[Col.attrs [ Spacing.mt3]] [

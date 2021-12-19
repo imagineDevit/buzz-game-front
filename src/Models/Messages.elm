@@ -45,7 +45,6 @@ type Message =
     | CanBuzz CanBuzzMsg
     | Error ErrorMsg
 
-
 type alias StateChange =
    {
         changeType: String,

@@ -1,17 +1,12 @@
 module Decoders.Responses exposing (..)
 
 import Json.Decode as D
-import Json.Encode as E
 import Models.Responses exposing (Response(..))
-
-
 
 apiResponseDecoder: D.Decoder Response
 apiResponseDecoder =
     D.field "type" D.string
     |> D.andThen responseDecoder
-
-
 
 responseDecoder: String -> D.Decoder Response
 responseDecoder response_type =
@@ -21,7 +16,3 @@ responseDecoder response_type =
         "BUZZ_REGISTERED" -> D.succeed BuzzRegistered
         "ANSWER_REGISTERED" -> D.succeed AnswerRegistered
         _ -> D.succeed PlayerAdded
-
-
-
-

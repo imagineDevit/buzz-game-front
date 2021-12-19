@@ -1,7 +1,4 @@
 port module Main exposing (main)
-
-
-
 import Bootstrap.Grid as Grid
 import Bootstrap.Grid.Row as Row
 
@@ -129,9 +126,6 @@ update msg state =
         EnableBuzz ->
             ({ state | canBuzz = True , gameState = RUNNING}, Cmd.none)
 
-
-
-
 -- SUBSCRIPTIONS
 subscriptions: State -> Sub Msg
 subscriptions _ = stateChange ReceiveStateChange
@@ -193,11 +187,12 @@ view state =
                             Views.conectedPlayersView players
                         ],
                         Grid.row[Row.attrs[Spacing.pt2]] [
-                            state.question
-                            |> Views.questionView canAnswer answerNumber
+                            Views.questionView canAnswer answerNumber state.question
                         ],
 
-                        Grid.row[Row.attrs[displayResult]][ Views.resultView good goodAnswer ],
+                        Grid.row[Row.attrs[displayResult]][
+                            Views.resultView good goodAnswer
+                        ],
 
                         Grid.row[Row.centerXs, Row.attrs[Size.w100, Spacing.mt5, class "text-center", started]][
                             Views.buzzerView state.canBuzz

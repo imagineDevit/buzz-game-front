@@ -15,7 +15,6 @@ defautMessage : String -> Msg.Message
 defautMessage cType =
     if cType == "GAME_START" then Msg.GameStart else Msg.GameEnd
 
-
 messageDecoder: String -> D.Decoder Msg.Message
 messageDecoder cType =
     case cType of
@@ -32,7 +31,6 @@ messageDecoder cType =
 
         _ ->
             D.map Msg.Error errorMsgDecoder
-
 
 errorMsgDecoder: D.Decoder Msg.ErrorMsg
 errorMsgDecoder =
@@ -76,4 +74,3 @@ answerDecoder =
     |> required "number" D.int
     |> required "label" D.string
     |> required "good" D.bool
-
